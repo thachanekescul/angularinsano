@@ -52,34 +52,40 @@ export class CarritoService {
 
   // Generar el XML del recibo
   generarXML(): string {
-    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<compra>\n';
+    // Obtener la fecha y hora actuales
+    const fechaHora = new Date().toISOString(); // Formato ISO 8601, ejemplo: 2025-03-19T14:30:00Z
     
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<compra>\n';
+  
+    // Añadir la fecha y hora al XML
+    xml += `<fecha>${fechaHora}</fecha>\n`;
+  
     // Añadir productos al XML (cantidad es 1)
     this.carrito.forEach((producto) => {
-      xml +=   `<producto id="${producto.id}" cantidad="1">\n`;
-      xml +=     `<nombre>${producto.nombre}</nombre>\n`;
-      xml +=     `<precio>${producto.precio}</precio>\n`;
-      xml +=   `</producto>\n`;
-      
+      xml += `<producto id="${producto.id}" cantidad="1">\n`;
+      xml += `<nombre>${producto.nombre}</nombre>\n`;
+      xml += `<precio>${producto.precio}</precio>\n`;
+      xml += `</producto>\n`;
     });
-
+  
+    // Cálculos
     const subtotal = this.calcularSubtotal();
     const iva = this.calcularIVA();
     const total = this.calcularTotal();
-
-    xml +=   `<subtotal>${subtotal.toFixed(2)}</subtotal>\n`;
-    xml +=   `<iva>${iva.toFixed(2)}</iva>\n`;
-    xml +=   `<total>${total.toFixed(2)}</total>\n`;
-    xml +=   `<tienda>Gracias por tu compra en ChinoSneakers</tienda>\n`;
-
+  
+    xml += `<subtotal>${subtotal.toFixed(2)}</subtotal>\n`;
+    xml += `<iva>${iva.toFixed(2)}</iva>\n`;
+    xml += `<total>${total.toFixed(2)}</total>\n`;
+  
+    xml += `<tienda>Gracias por comprar en SCI-SHOP</tienda>\n`;
+  
     xml += '</compra>';
-    
+  
     // Limpiar el carrito tras la compra
     this.limpiarCarrito();
-    
+  
     return xml;
   }
-
   // Guardar el carrito en localStorage
   private guardarCarrito() {
     localStorage.setItem('carrito', JSON.stringify(this.carrito));

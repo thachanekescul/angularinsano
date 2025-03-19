@@ -53,7 +53,15 @@ export class InventarioService {
   // Método para generar el XML de los productos
   generarXML(): string {
     const productos = this.obtenerInventario();
+    
+    // Obtener la fecha y hora actuales
+    const fechaHora = new Date().toISOString(); // Formato ISO 8601: ejemplo "2025-03-19T14:30:00Z"
+    
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += `<marca>"INVENTARIO SCI-SHOP</marca>`;
+    // Añadir la fecha y hora de visualización al XML
+    xml += `<fecha_visualizacion>${fechaHora}</fecha_visualizacion>\n`;
+    
     xml += '<productos>\n';
     
     productos.forEach(producto => {

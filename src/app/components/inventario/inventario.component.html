@@ -32,27 +32,29 @@
   </ng-container>
 
   <!-- Formulario de agregar o editar producto -->
-  <div *ngIf="mostrarFormulario" class="formulario">
-    <h3>{{productoEditando ? 'Editar Producto' : 'Agregar Producto'}}</h3>
-    <form (ngSubmit)="productoEditando ? actualizarProductoFormulario() : agregarProducto()">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" [(ngModel)]="nuevoProducto.nombre" name="nombre" required />
+<!-- Formulario de agregar o editar producto -->
+<div *ngIf="mostrarFormulario" class="formulario">
+  <h3>{{productoEditando ? 'Editar Producto' : 'Agregar Producto'}}</h3>
+  <form (ngSubmit)="productoEditando ? actualizarProductoFormulario() : agregarProducto()">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" [(ngModel)]="nuevoProducto.nombre" name="nombre" required />
 
-      <label for="precio">Precio:</label>
-      <input type="number" id="precio" [(ngModel)]="nuevoProducto.precio" name="precio" required />
+    <label for="precio">Precio:</label>
+    <input type="number" id="precio" [(ngModel)]="nuevoProducto.precio" name="precio" required />
 
-      <label for="cantidad">Cantidad:</label>
-      <input type="number" id="cantidad" [(ngModel)]="nuevoProducto.cantidad" name="cantidad" required />
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" [(ngModel)]="nuevoProducto.cantidad" name="cantidad" required />
 
-      <label for="imagen">Imagen:</label>
-      <input type="file" (change)="onImageSelected($event)" />
+    <label for="imagen">Imagen:</label>
+    <input type="file" (change)="onImageSelected($event)" />
 
-      <div class="botones-form">
-        <button type="submit">{{productoEditando ? 'Actualizar' : 'Agregar'}}</button>
-        <button (click)="mostrarFormulario = false">Cancelar</button>
-      </div>
-    </form>
-  </div>
+    <div class="botones-form">
+      <button type="submit">{{productoEditando ? 'Actualizar' : 'Agregar'}}</button>
+      <button (click)="mostrarFormulario = false">Cancelar</button>
+    </div>
+  </form>
+</div>
+
 
   <!-- Mostrar XML y opción para descargar -->
   <div *ngIf="recibo" class="recibo">

@@ -51,7 +51,9 @@ export class InventarioComponent implements OnInit {
       this.inventarioService.agregarProductoAlLocalStorage(this.nuevoProducto); // Guardamos en localStorage
 
       this.nuevoProducto = new Producto(0, '', 0, '', 0);
-      this.mostrarFormulario = false;
+    
+      this.productoEditando = false;  // Asegura que sea "Agregar Producto"
+      this.mostrarFormulario = true;
     }
   }
 
@@ -61,6 +63,7 @@ export class InventarioComponent implements OnInit {
     this.nuevoProducto = { ...producto }; // Copiamos los datos del producto al formulario
     this.productoEditando = true; // Activamos el modo de edición
     this.mostrarFormulario = true; // Mostramos el formulario
+    
   }
 
   // Función para actualizar un producto ya existente
