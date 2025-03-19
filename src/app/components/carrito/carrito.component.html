@@ -1,45 +1,52 @@
 <div class="carrito-container">
     <div class="header-carrito">
-        <span class="volver" (click)="regresar()">Volver</span>
-        <h2 class="carrito-titulo">Carrito de compras</h2>
+      <span class="volver" (click)="regresar()">Volver</span>
+      <h2 class="carrito-titulo">Carrito de compras</h2>
     </div>
-
-    <div class="contenedor-info">
-        <div class="carrito-contenido" *ngIf="carrito.length > 0">
-            <ul class="carrito-lista">
-                <li class="carrito-item" *ngFor="let producto of carrito; let i = index">
-                    <div class="producto-info">
-                        <span class="producto-nombre">{{ producto.nombre }}</span>
-                        <span class="producto-precio">${{ producto.precio }}</span>
-                    </div>
-                    <button class="eliminar-button" (click)="eliminarProducto(i)">Eliminar</button>
-                </li>
-            </ul>
-    
-            <div class="carrito-resumen">
-                <div class="carrito-subtotal">
-                    <span>Subtotal:</span>
-                    <span> ${{ subtotal.toFixed(2) }}</span>
-                </div>
-                <div class="carrito-total">
-                    <span>Total:</span>
-                    <span> ${{ total.toFixed(2) }}</span>
-                </div>
-                <button class="recibo-button" (click)="generarXML()">Generar Recibo</button>
+  
+    <div *ngIf="carrito.length > 0">
+      <ul class="carrito-lista">
+        <li class="carrito-item" *ngFor="let producto of carrito; let i = index">
+          <div class="producto-info">
+            <!-- Mostrar imagen del producto -->
+            <div class="img-producto">
+              <img *ngIf="producto.imagen; else noImage" [src]="producto.imagen" alt="{{producto.nombre}}" />
+              <ng-template #noImage>
+                <img src="path/to/default/image.jpg" alt="Imagen predeterminada" />
+              </ng-template>
             </div>
+  
+            <span class="producto-nombre">{{ producto.nombre }}</span>
+            <span class="producto-precio">${{ producto.precio }}</span>
+          </div>
+  
+          <!-- Botón para eliminar producto del carrito -->
+          <button class="eliminar-button" (click)="eliminarProducto(i)">Eliminar</button>
+        </li>
+      </ul>
+  
+      <div class="carrito-resumen">
+        <div class="carrito-subtotal">
+          <span>Subtotal:</span>
+          <span> ${{ subtotal.toFixed(2) }}</span>
         </div>
-    
-        <p *ngIf="carrito.length === 0" class="carrito-vacio">
-            <span class="carrito-vacio-icon">🛒</span>
-            El carrito está vacío
-        </p>
-    
-        <div *ngIf="recibo" class="recibo">
-            <h3 class="recibo-titulo">Recibo Generado</h3>
-            <pre class="recibo-contenido">{{ recibo }}</pre>
-            <button class="descargar-button" (click)="descargarXML()">Descargar XML</button>
+        <div class="carrito-total">
+          <span>Total:</span>
+          <span> ${{ total.toFixed(2) }}</span>
         </div>
+        <button class="recibo-button" (click)="generarXML()">Generar Recibo</button>
+      </div>
     </div>
- 
-    
-</div>
+  
+    <p *ngIf="carrito.length === 0" class="carrito-vacio">
+      <span class="carrito-vacio-icon">🛒</span>
+      El carrito está vacío
+    </p>
+  
+    <div *ngIf="recibo" class="recibo">
+      <h3 class="recibo-titulo">Recibo Generado</h3>
+      <pre class="recibo-contenido">{{ recibo }}</pre>
+      <button class="descargar-button" (click)="descargarXML()">Descargar XML</button>
+    </div>
+  </div>
+  

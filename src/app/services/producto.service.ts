@@ -8,10 +8,9 @@ export class ProductoService {
 
   // Aquí definimos los productos iniciales
   private productosIniciales: Producto[] = [
-    new Producto(1, 'Nike Jordan 1 Mid - Vela/Sombrío apagado/Blanco/Rojo gimnasio', 3199, 'assets/tenis1.jpg', 10),
-    new Producto(2, 'Air Jordan 1 Low -  Ratán/Vela/Camuflaje del desierto', 2899, 'assets/tenis2.jpg', 10),
-    new Producto(3, 'Nike Court Vision Low Next Nature - Vela/Blanco/Naranja seguridad', 1799, 'assets/tenis3.jpg', 10),
-    new Producto(4, 'Nike Blazer Mid 77 Vintage - Blanco/Blanco cumbre/Vela/Azul royal intenso', 2499, 'assets/tenis4.jpg', 10),
+    new Producto(1, 'DATA', 1200, 'assets/foto1.png',10),
+    new Producto(2, 'dtmf', 899, 'assets/foto2.png',10),
+    new Producto(3, 'duolingo peluche', 6666, 'assets/foto3.png',666),
   ];
 
   constructor() {

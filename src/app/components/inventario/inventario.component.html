@@ -8,13 +8,26 @@
   </div>
 
   <!-- Usamos ng-container para aplicar *ngFor y *ngIf -->
-  <ng-container *ngFor="let producto of productos">
-    <div *ngIf="producto" class="producto">
-      <p>{{producto.nombre}} - {{producto.cantidad}}</p>
-
-      <!-- Botón de editar al lado del producto -->
-      <button (click)="editarProducto(producto)" class="editar-button">Editar</button>
-      <button (click)="eliminarProducto(producto.id)" class="eliminar-button">Eliminar</button>
+  <ng-container *ngIf="productos.length">
+    <div class="producto-lista">
+      <div *ngFor="let producto of productos">
+        <div *ngIf="producto" class="producto">
+          <div class="img-producto">
+            <!-- Muestra la imagen del producto si existe -->
+            <img *ngIf="producto.imagen; else noImage" [src]="producto.imagen" alt="{{producto.nombre}}" />
+            <!-- Si no existe una imagen, se muestra una imagen por defecto -->
+            <ng-template #noImage>
+              <img src="path/to/default/image.jpg" alt="Imagen predeterminada" />
+            </ng-template>
+          </div>
+          <div class="producto-info">
+            <p>{{producto.nombre}} - {{producto.cantidad}}</p>
+          </div>
+          <!-- Botones de editar y eliminar al lado del producto -->
+          <button (click)="editarProducto(producto)" class="editar-button">Editar</button>
+          <button (click)="eliminarProducto(producto.id)" class="eliminar-button">Eliminar</button>
+        </div>
+      </div>
     </div>
   </ng-container>
 

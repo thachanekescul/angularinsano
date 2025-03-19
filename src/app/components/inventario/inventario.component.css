@@ -1,9 +1,18 @@
 /* Estilos generales */
+
+:host {
+  display: block;
+  background-color: black; /* Fondo negro */
+ 
+  min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+  padding: 20px; /* Añade un poco de padding para que el contenido no esté pegado a los bordes */
+}
+
 h2 {
     text-align: center;
     font-size: 2rem;
     margin-top: 20px;
-    color: #333;
+    color: #ff0000;
   }
 
 .contenedor-inventario{
@@ -55,8 +64,23 @@ h2 {
   margin-left: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  color:#ffffff;
+  background-color: #000000;
+}
+/* Estilos para la imagen del producto */
+.img-producto {
+  flex-shrink: 0; /* Para evitar que la imagen se encoja */
+  width: 80px; /* Ancho fijo para la imagen */
+  height: 80px; /* Alto fijo para la imagen */
+  margin-right: 20px; /* Espacio entre la imagen y los detalles */
 }
 
+.img-producto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantener la proporción de la imagen sin distorsión */
+  border-radius: 8px;
+}
 .producto button:hover {
   background-color: #202123;
   color: white;
@@ -99,12 +123,20 @@ h2 {
 /* Formulario para agregar un producto */
 .formulario {
   background-color: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   margin: 20px auto;
   text-align: center;
+  position: fixed; /* Posicionamiento fijo para que siempre esté encima */
+  top: 20%; /* Coloca el formulario a una distancia del top */
+  left: 50%;
+  transform: translateX(-50%); /* Para centrarlo horizontalmente */
+  z-index: 1000; /* Asegura que el formulario se muestre encima de todo */
+  width: 100%; /* Asegura que el formulario no sea más grande que el contenedor */
+  max-height: 80%; /* Evita que el formulario sea muy alto */
+  overflow-y: auto; /* Permite que el formulario sea desplazable si es necesario */
 }
 
 .formulario h3 {
@@ -244,4 +276,115 @@ h2 {
       width: 90%; /* Ancho del formulario en pantallas pequeñas */
   }
   }
+
+  
+
+  .formulario, .formulario-editar {
+    background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+  position: absolute; /* Posicionamiento absoluto sobre los productos */
+  top: 0; /* Lo coloca en la parte superior */
+  left: 50%;
+  transform: translateX(-50%); /* Para centrarlo horizontalmente */
+  z-index: 10; /* Asegura que el formulario se muestre encima de los productos */
+  width: 100%; /* Asegura que el formulario no sea más grande que el contenedor */
+  }
+  
+  /* Estilo del formulario de edición (ventana emergente) */
+  .formulario-editar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 80%;
+    max-width: 600px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+  }
+  
+  /* Fondo oscuro detrás del formulario */
+  .formulario-editar::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+  
+  /* Otros estilos para el producto */
+  .producto {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .producto:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Otros estilos para los botones y el contenedor */
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+  }
+  
+  button:hover {
+    background-color: #aeb2b7;
+    color: #202123;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
