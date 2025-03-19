@@ -1,18 +1,16 @@
-import { Component, OnInit,ViewEncapsulation } from '@angular/core';
-import { Producto } from '../../models/producto'; 
+import { Component, OnInit } from '@angular/core';
+import { Producto } from '../../models/producto';
 import { ProductoService } from '../../services/producto.service';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-producto',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './producto.component.html',
-  styleUrls: ['./producto.component.css'] ,
-  encapsulation: ViewEncapsulation.None,// Cambiado a styleUrls
+  styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
 
@@ -25,6 +23,7 @@ export class ProductoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Obtener los productos desde el servicio (ahora se obtienen desde localStorage)
     this.productos = this.productoService.obtenerProducto();
   }
 
@@ -34,5 +33,9 @@ export class ProductoComponent implements OnInit {
 
   irAlCarrito(): void {
     this.router.navigate(['/carrito']);
+  }
+
+  irAlInventario(): void {
+    this.router.navigate(['/inventario']);
   }
 }

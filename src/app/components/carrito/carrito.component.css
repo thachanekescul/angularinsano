@@ -1,57 +1,44 @@
 /* Contenedor principal con mejor estructura */
-/* Asegura que toda la página tenga fondo negro */
 
-html, body, app-root {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: black !important;
-
-    display: flex;
-    flex-direction: column;
-}
-p,
-span,
-h2,
-h3{
-    font-family: sans-serif;
-}
 .carrito-container {
-   
     max-width: 900px;
     margin: 2rem auto;
-    padding: 1.5rem;
+
     border-radius: 10px;
-    box-shadow: 0 5px 15px #ff0000;
-    background-color: #ffffff; 
-    margin-top: 100px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
 }
 
-.header-carrito { 
-   
+.header-carrito {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    color: #000;
+    border-radius: 10px 10px 0 0;
+    background-color: #202123;
+    
 }
 .volver {
     position: absolute;
     left: 1rem;
-    color: rgb(0, 0, 0);
+    color: white;
     font-weight: 500;
     cursor: pointer;
 }
 
 .volver:hover{
-    color: #ff0000;
+    color: #9f9898;
 }
 
+
+.contenedor-info{
+    padding: 1rem;
+}
 
 
 .carrito-titulo {
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: white;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
@@ -127,11 +114,12 @@ h3{
     font-weight: 600;
 }
 
-.recibo-button {
+.recibo-button,
+.descargar-button {
     background-color: #202123;
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -179,40 +167,4 @@ h3{
     overflow-x: auto;
     font-family: monospace;
     font-size: 0.9rem;
-}
-
-.descargar-opciones{
-text-align: center;
-
-
-}
-.descargar-recibo-button{
-    background-color: #1e41a1;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-left: 1rem;
-}
-
-.descargar-recibo-button:hover {
-    background-color: #b5c5f0;
-    color: #202123;
-}
-.descargar-xml-button{
-    background-color: #6f35dc;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-left: 1rem;
-}
-
-.descargar-xml-button:hover {
-    background-color: #cbb9ec;
-    color: #202123;
 }

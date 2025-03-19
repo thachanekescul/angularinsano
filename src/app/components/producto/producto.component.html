@@ -1,4 +1,4 @@
-<h2 class="titulo-centrado">Catálogo de Productos</h2>
+<h2 class="titulo-centrado">ChinoSneakers - Catálogo de Productos</h2>
 
 <div class="productos">
   <div *ngFor="let producto of productos" class="producto">
@@ -10,6 +10,7 @@
     </div>
     <div class="precio-producto">
       <p>Precio: ${{producto.precio}}</p>
+      <p>Cantidad: {{producto.cantidad}}</p> <!-- Mostrar cantidad -->
     </div>
 
     <button (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
@@ -18,4 +19,6 @@
 
 <div class="contenedor-boton">
   <button class="carrito-button" (click)="irAlCarrito()">Ir al carrito</button>
+
+  <button class="inventario-button" (click)="irAlInventario()">Ir al inventario</button>
 </div>

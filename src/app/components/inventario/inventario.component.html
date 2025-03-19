@@ -1,0 +1,50 @@
+<div class="contenedor-inventario">
+  <h2>Inventario de Productos</h2>
+
+  <div class="contenedor-boton">
+    <button (click)="mostrarFormulario = true" class="agregarproducto-button">Agregar Producto</button>
+    <button class="generarxml-button" (click)="generarXML()">Generar XML</button>
+    <button class="volvercatalogo-button" (click)="regresar()">Volver a catalogo</button>
+  </div>
+
+  <!-- Usamos ng-container para aplicar *ngFor y *ngIf -->
+  <ng-container *ngFor="let producto of productos">
+    <div *ngIf="producto" class="producto">
+      <p>{{producto.nombre}} - {{producto.cantidad}}</p>
+
+      <!-- Botón de editar al lado del producto -->
+      <button (click)="editarProducto(producto)" class="editar-button">Editar</button>
+      <button (click)="eliminarProducto(producto.id)" class="eliminar-button">Eliminar</button>
+    </div>
+  </ng-container>
+
+  <!-- Formulario de agregar o editar producto -->
+  <div *ngIf="mostrarFormulario" class="formulario">
+    <h3>{{productoEditando ? 'Editar Producto' : 'Agregar Producto'}}</h3>
+    <form (ngSubmit)="productoEditando ? actualizarProductoFormulario() : agregarProducto()">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="nuevoProducto.nombre" name="nombre" required />
+
+      <label for="precio">Precio:</label>
+      <input type="number" id="precio" [(ngModel)]="nuevoProducto.precio" name="precio" required />
+
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" id="cantidad" [(ngModel)]="nuevoProducto.cantidad" name="cantidad" required />
+
+      <label for="imagen">Imagen:</label>
+      <input type="file" (change)="onImageSelected($event)" />
+
+      <div class="botones-form">
+        <button type="submit">{{productoEditando ? 'Actualizar' : 'Agregar'}}</button>
+        <button (click)="mostrarFormulario = false">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Mostrar XML y opción para descargar -->
+  <div *ngIf="recibo" class="recibo">
+    <h3 class="recibo-titulo">XML Generado</h3>
+    <pre class="recibo-contenido">{{ recibo }}</pre>
+    <button class="descargar-button" (click)="descargarXML()">Descargar XML</button>
+  </div>
+</div>

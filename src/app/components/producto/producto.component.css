@@ -1,38 +1,10 @@
-html, body, app-root {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: black !important;
-
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 100vh;
-}
-p,
-span,
-h2,
-h3{
-    font-family: sans-serif;
-}
 
 .titulo-centrado {
-    margin-top: 300px;
-    padding-top: 15px;
     text-align: center;
     margin-bottom: 20px;
-    color:red;
 }
 
 .productos {
-    margin-top: 40px;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
@@ -62,7 +34,7 @@ h3{
 }
 
 .producto .nombre-producto {
-    height: 1rem;
+    height: 6rem;
 }
 
 .producto .nombre-producto h3 {
@@ -94,13 +66,15 @@ h3{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
     margin-top: 5rem;
 }
 
-.carrito-button {
+.carrito-button,
+.inventario-button {
     width: 10rem;
-    background-color: #ff0000;
-    color: rgb(0, 0, 0);
+    background-color: #202123;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -108,9 +82,10 @@ h3{
     transition: background-color 0.3s;
 }
 
-.carrito-button:hover {
-    background-color: #be7373;
-    color: #ffffff;
+.carrito-button:hover,
+.inventario-button:hover {
+    background-color: #aeb2b7;
+    color: #202123;
 }
 
 @media (max-width: 600px) {

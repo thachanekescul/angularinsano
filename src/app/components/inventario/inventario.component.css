@@ -1,0 +1,247 @@
+/* Estilos generales */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 20px;
+    color: #333;
+  }
+
+.contenedor-inventario{
+  max-width: 900px;  /* Establece el ancho máximo */
+  margin: 0 auto;    /* Centra el contenedor horizontalmente */
+  padding: 20px;     /* Agrega un poco de espa*/
+
+
+}
+
+.producto {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.producto:hover {
+  transform: scale(1.02);
+}
+
+.producto p {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+  text-align: left;
+}
+
+.producto input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 100px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.producto button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.producto button:hover {
+  background-color: #202123;
+  color: white;
+}
+
+.producto button:active {
+  background-color: #202123;
+}
+
+.contenedor-boton{
+  padding-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  }
+
+.generarxml-button,
+.volvercatalogo-button,
+.agregarproducto-button {
+    width: 10rem;
+    background-color: #202123;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.generarxml-button:hover,
+.volvercatalogo-button:hover,
+.agregarproducto-button:hover{
+    background-color: #aeb2b7;
+    color: #202123;
+}
+
+
+/* Formulario para agregar un producto */
+.formulario {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.formulario h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.formulario label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+  text-align: left;
+}
+
+.formulario input[type="text"],
+.formulario input[type="number"],
+.formulario input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.formulario input[type="file"] {
+  padding: 5px 10px;
+}
+
+.formulario .botones-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.formulario button {
+  width: 10rem;
+  background-color: #202123;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formulario button:hover {
+  background-color: #aeb2b7;
+  color: #202123;
+}
+
+.formulario .cancelar-button {
+  background-color: #f44336;
+  margin-left: 10px;
+}
+
+.formulario .cancelar-button:hover {
+  background-color: #e53935;
+  color: white;
+}
+
+.formulario input:focus {
+  outline: none;
+  border-color: #202123;
+}
+
+/* Estilos para el botón de agregar producto */
+.producto-agregado {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.producto-agregado:hover {
+  background-color: #45a049;
+}
+
+
+/* Recibo mejorado */
+.recibo {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.recibo-titulo {
+    margin-top: 0;
+    color: #202123;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.recibo-contenido {
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.descargar-button {
+  background-color: #202123;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .producto {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .producto p {
+      margin-bottom: 10px;
+    }
+  
+    .producto input {
+      margin-bottom: 10px;
+    }
+    .formulario {
+      width: 90%; /* Ancho del formulario en pantallas pequeñas */
+  }
+  }
+  

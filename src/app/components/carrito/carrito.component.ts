@@ -1,8 +1,7 @@
-import { Component ,ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-carrito',
@@ -10,52 +9,50 @@ import { Router } from '@angular/router';
   imports: [CommonModule],
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class CarritoComponent {
   carrito: any[] = [];
-  recibo: string = '';
+  recibo: string = ''; 
+  subtotal: number = 0;
+  iva: number = 0;
+  total: number = 0;
 
   constructor(private carritoService: CarritoService, private router: Router) {}
 
   ngOnInit() {
-    this.carrito = this.carritoService.obtenerCarrito();
+    this.actualizarCarrito();
   }
 
   eliminarProducto(index: number) {
     this.carritoService.eliminarProducto(index);
+    this.actualizarCarrito();
   }
 
   generarXML() {
-    this.recibo = this.carritoService.generarXML();
+    this.recibo = this.carritoService.generarXML(); // Genera y almacena el XML
+    this.carritoService.actualizarInventario(this.carrito); // Actualiza el inventario con los productos del carrito
+    this.actualizarCarrito(); // Actualizamos el carrito para reflejar los cambios
+  }
+  
+
+  descargarXML() {
+    if (!this.recibo) return; // No descargar si el recibo no está generado
+
+    const blob = new Blob([this.recibo], { type: 'application/xml' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'recibo.xml'; 
+    link.click();
   }
 
-  calcularTotal() {
-    return this.carrito.reduce((total, producto) => total + producto.precio, 0);
+  actualizarCarrito() {
+    this.carrito = this.carritoService.obtenerCarrito();
+    this.subtotal = this.carritoService.calcularSubtotal();
+    this.iva = this.carritoService.calcularIVA();
+    this.total = this.carritoService.calcularTotal();
   }
 
   regresar(): void {
     this.router.navigate(['/productos']);
-  }
-
-  descargarRecibo() {
-    const contenido = this.carritoService.generarTextoRecibo();
-    this.descargarArchivo(contenido, 'recibo.txt', 'text/plain');
-  }
-
-  descargarXML() {
-    const contenido = this.carritoService.generarXML();
-    this.descargarArchivo(contenido, 'recibo.xml', 'application/xml');
-  }
-
-  private descargarArchivo(contenido: string, nombreArchivo: string, tipo: string) {
-    const blob = new Blob([contenido], { type: tipo });
-    const enlace = document.createElement('a');
-    enlace.href = URL.createObjectURL(blob);
-    enlace.download = nombreArchivo;
-    document.body.appendChild(enlace);
-    enlace.click();
-    document.body.removeChild(enlace);
-    URL.revokeObjectURL(enlace.href);
   }
 }
